@@ -1,59 +1,544 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Task Management System
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Aplikasi Task Management berbasis web yang dibuat menggunakan Laravel, Blade, Tailwind CSS, JavaScript, dan MySQL.
 
-## About Laravel
+Project ini dibuat sebagai technical test untuk menunjukkan implementasi dashboard responsive, REST API, CRUD task, search, pagination, validation, error handling, loading state, empty state, dan responsive layout.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tech Stack
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Laravel 12
+* PHP 8.2+
+* MySQL
+* Blade
+* Tailwind CSS
+* JavaScript
+* Vite
+* Eloquent ORM
+* REST API
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+### Dashboard
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Dashboard menyediakan beberapa fitur utama:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+* User profile
+* Task statistics
+* Task list
+* Search task
+* Pagination
+* Recent activity
+* Responsive desktop dan mobile layout
+* Loading state
+* Empty state
+* Error state
 
-## Laravel Sponsors
+### Task Management
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Task memiliki data:
 
-### Premium Partners
+* ID
+* User ID
+* Title
+* Description
+* Status
+* Priority
+* Created At
+* Updated At
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Status task:
 
-## Contributing
+* `pending`
+* `in_progress`
+* `completed`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Priority task:
 
-## Code of Conduct
+* `low`
+* `medium`
+* `high`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### REST API
 
-## Security Vulnerabilities
+API menyediakan endpoint untuk:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Menampilkan seluruh task
+* Menampilkan detail task
+* Membuat task baru
+* Mengubah task
+* Mengubah status task
+* Menghapus task
 
-## License
+## Requirements
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Sebelum menjalankan project, pastikan sudah tersedia:
+
+* PHP >= 8.2
+* Composer
+* Node.js
+* NPM
+* MySQL
+* Git
+
+## Installation
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/USERNAME/task-management.git
+```
+
+Masuk ke folder project:
+
+```bash
+cd task-management
+```
+
+### 2. Install PHP Dependencies
+
+```bash
+composer install
+```
+
+### 3. Install JavaScript Dependencies
+
+```bash
+npm install
+```
+
+### 4. Setup Environment
+
+Copy file `.env.example` menjadi `.env`.
+
+```bash
+cp .env.example .env
+```
+
+Untuk Windows, dapat dilakukan secara manual dengan membuat file:
+
+```text
+.env
+```
+
+Kemudian sesuaikan konfigurasi database:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=task_management
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Sesuaikan `DB_DATABASE`, `DB_USERNAME`, dan `DB_PASSWORD` dengan konfigurasi MySQL lokal.
+
+### 5. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 6. Run Migration and Seeder
+
+```bash
+php artisan migrate:fresh --seed
+```
+
+Command tersebut akan membuat tabel database sekaligus memasukkan sample data task.
+
+### 7. Run Development Server
+
+Jalankan Laravel:
+
+```bash
+php artisan serve
+```
+
+Kemudian jalankan Vite pada terminal lain:
+
+```bash
+npm run dev
+```
+
+Aplikasi dapat diakses melalui:
+
+```text
+http://127.0.0.1:8000/dashboard
+```
+
+## API Documentation
+
+Base URL:
+
+```text
+http://127.0.0.1:8000/api
+```
+
+### Get All Tasks
+
+```http
+GET /api/tasks
+```
+
+Optional search:
+
+```http
+GET /api/tasks?search=dashboard
+```
+
+Optional pagination:
+
+```http
+GET /api/tasks?page=2
+```
+
+Example response:
+
+```json
+{
+    "success": true,
+    "message": "Tasks retrieved successfully.",
+    "data": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 1,
+                "user_id": 1,
+                "title": "Build dashboard",
+                "description": "Create responsive task management dashboard",
+                "status": "in_progress",
+                "priority": "high",
+                "created_at": "2026-09-27T10:00:00.000000Z",
+                "updated_at": "2026-09-27T10:00:00.000000Z"
+            }
+        ]
+    }
+}
+```
+
+### Get Task Detail
+
+```http
+GET /api/tasks/{id}
+```
+
+Example:
+
+```http
+GET /api/tasks/1
+```
+
+If the task does not exist, the API returns:
+
+```http
+404 Not Found
+```
+
+### Create Task
+
+```http
+POST /api/tasks
+```
+
+Request body:
+
+```json
+{
+    "user_id": 1,
+    "title": "Create documentation",
+    "description": "Write README documentation for the project",
+    "status": "pending",
+    "priority": "medium"
+}
+```
+
+Validation:
+
+* `user_id` must exist in the users table
+* `title` is required
+* `title` maximum 255 characters
+* `description` is optional
+* `status` must be `pending`, `in_progress`, or `completed`
+* `priority` must be `low`, `medium`, or `high`
+
+Successful response:
+
+```http
+201 Created
+```
+
+### Update Task
+
+```http
+PUT /api/tasks/{id}
+```
+
+Example:
+
+```http
+PUT /api/tasks/1
+```
+
+Request body:
+
+```json
+{
+    "title": "Build responsive dashboard",
+    "description": "Update dashboard layout and responsive behavior",
+    "status": "in_progress",
+    "priority": "high"
+}
+```
+
+Successful response:
+
+```http
+200 OK
+```
+
+### Update Task Status
+
+```http
+PATCH /api/tasks/{id}/status
+```
+
+Example:
+
+```http
+PATCH /api/tasks/1/status
+```
+
+Request body:
+
+```json
+{
+    "status": "completed"
+}
+```
+
+Successful response:
+
+```http
+200 OK
+```
+
+### Delete Task
+
+```http
+DELETE /api/tasks/{id}
+```
+
+Example:
+
+```http
+DELETE /api/tasks/1
+```
+
+Successful response:
+
+```http
+200 OK
+```
+
+## HTTP Status Codes
+
+The API uses appropriate HTTP status codes:
+
+| Status Code | Description                   |
+| ----------- | ----------------------------- |
+| 200         | Request successful            |
+| 201         | Resource successfully created |
+| 404         | Resource not found            |
+| 422         | Validation error              |
+| 500         | Internal server error         |
+
+## Error Handling
+
+API errors are handled using JSON responses.
+
+Example validation error:
+
+```json
+{
+    "message": "The given data was invalid.",
+    "errors": {
+        "title": [
+            "The title field is required."
+        ]
+    }
+}
+```
+
+Unexpected server errors are logged using Laravel's logging system and return a `500 Internal Server Error` response.
+
+## Logging
+
+Important API operations are logged, including:
+
+* Task creation
+* Task update
+* Task status update
+* Task deletion
+* Unexpected API errors
+
+Laravel log files can be found in:
+
+```text
+storage/logs/laravel.log
+```
+
+## Database Structure
+
+### users
+
+| Column     | Type      |
+| ---------- | --------- |
+| id         | bigint    |
+| name       | varchar   |
+| email      | varchar   |
+| status     | varchar   |
+| created_at | timestamp |
+| updated_at | timestamp |
+
+### tasks
+
+| Column      | Type      |
+| ----------- | --------- |
+| id          | bigint    |
+| user_id     | bigint    |
+| title       | varchar   |
+| description | text      |
+| status      | enum      |
+| priority    | enum      |
+| created_at  | timestamp |
+| updated_at  | timestamp |
+
+Relationship:
+
+```text
+User
+  |
+  | 1:N
+  ↓
+Tasks
+```
+
+A user can have multiple tasks, while each task belongs to one user.
+
+## Project Structure
+
+```text
+app/
+├── Http/
+│   └── Controllers/
+│       ├── Api/
+│       │   └── TaskController.php
+│       └── DashboardController.php
+│
+├── Models/
+│   ├── Task.php
+│   └── User.php
+│
+resources/
+├── js/
+│   └── app.js
+│
+└── views/
+    ├── components/
+    │   ├── header.blade.php
+    │   └── sidebar.blade.php
+    │
+    ├── layouts/
+    │   └── app.blade.php
+    │
+    └── dashboard.blade.php
+
+routes/
+├── api.php
+└── web.php
+
+database/
+├── migrations/
+└── seeders/
+    └── TaskSeeder.php
+```
+
+## Testing API
+
+API dapat diuji menggunakan tools seperti:
+
+* Postman
+* Insomnia
+* Thunder Client
+* Browser untuk GET request
+
+Contoh menggunakan cURL:
+
+```bash
+curl http://127.0.0.1:8000/api/tasks
+```
+
+Create task:
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/tasks \
+-H "Content-Type: application/json" \
+-d "{\"user_id\":1,\"title\":\"Test Task\",\"description\":\"Testing API\",\"status\":\"pending\",\"priority\":\"medium\"}"
+```
+
+## Dashboard States
+
+Dashboard memiliki beberapa state untuk meningkatkan user experience:
+
+### Loading State
+
+Ditampilkan ketika dashboard sedang mengambil data task dari REST API.
+
+### Empty State
+
+Ditampilkan ketika tidak terdapat task atau hasil pencarian tidak menemukan task.
+
+### Error State
+
+Ditampilkan ketika terjadi kegagalan saat mengambil data dari API dan menyediakan tombol untuk mencoba kembali.
+
+### Responsive State
+
+Dashboard menyesuaikan tampilan berdasarkan ukuran layar:
+
+* Desktop: sidebar dan table
+* Mobile: collapsible sidebar dan task cards
+
+## Development Notes
+
+Project menggunakan JavaScript `fetch()` untuk berkomunikasi dengan REST API.
+
+Alur pengambilan data:
+
+```text
+Dashboard
+    ↓
+JavaScript Fetch
+    ↓
+GET /api/tasks
+    ↓
+TaskController
+    ↓
+Eloquent ORM
+    ↓
+MySQL
+    ↓
+JSON Response
+    ↓
+Dashboard
+```
+
+Search dan pagination dilakukan melalui API sehingga data task tidak perlu dimuat seluruhnya ke halaman pada saat awal.
+
+## Author
+
+Naura Azzahra Budiyono
+
+Software Engineering Student
+Politeknik Negeri Indramayu
